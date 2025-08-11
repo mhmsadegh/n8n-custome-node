@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n_service
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      # ⭐️ منطقه زمانی روی تهران تنظیم شده است
+      - TZ=Asia/Tehran
+    volumes:
+      # پوشه برای ذخیره گردش‌کارها
+      - ./n8n-data:/home/node/.n8n
+      # پوشه برای اضافه کردن نودهای سفارشی
+      - ./custom-nodes:/home/node/.n8n/custom
